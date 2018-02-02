@@ -1,0 +1,48 @@
+group: StudentCollegeApply
+
+Students = {
+	sID:number, sName:string, GPA:number, sizeHS:number
+	123,'Amy', 3.7 ,1000
+	234,'Bob',3.4,1500
+	673,'Craig',NULL,2600
+	774,'Mike',3.6,2000
+	889,'John',3.9,1000
+	557,'Sarah',3.8,1700
+	654,'Cris',3.5,900
+	421,'Marga',3.6,1200
+	369,'Bel',3.7,2600
+}
+
+
+College = {
+  cName:string, state:string, enr:number
+	'Stanford','CA',1000
+	'Berkeley','CA',25000
+	'MIT','MA',8000
+	'Borja Moll','PM',1300
+	'Ses Estacions','PM',950
+	'Pau Casesnoves','IN',1200	
+}
+
+Apply = {
+	sID:number, cName:string, major:string, decision:string
+	123,'Stanford','CS','A'
+	234,'Stanford','EE','R'
+	123,'Berkeley','CS','A'
+	673,'MIT','CS','R'
+	774,'Stanford','CS','R'
+	889,'Berkeley','EE','A'
+	557,'MIT','CS','A'
+	889,'Borja Moll','CS','R'
+	557,'MIT','EE','R'
+	889,'Stanford','EE','A'
+	889,'Borja Moll','EE','A'
+	673,'Stanford','MA','R'
+	421,'Borja Moll','CS','R'
+	369,'Ses Estacions','BI','A'
+	654,'Ses Estacions','MA','A'
+	889,'Borja Moll','BI','A'
+	369,'Ses Estacions','AD','R'
+	557,'Borja Moll','EE','R'	
+	421,'Berkeley','CS','A'
+}

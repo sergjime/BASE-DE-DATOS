@@ -1,0 +1,56 @@
+﻿﻿-- Muestra la identidad de los perros que fueron adoptados por personas de Valencia.
+
+
+π Dog.id σ Person.city = 'Valencia' (Dog ⨝ Adoption.did = Dog.id (Adoption ⨝ Adoption.pid = Person.id Person))
+
+
+-------------------------------------------------------------------------------------------------------
+
+-- 
+Muestra el nombre de las personas que adoptaron en una fecha superior al año 2013 y tienen fotografía.
+
+π Person.name (( σ dateAd > date('2013-12-31') (Person ⨝ Person.id = Adoption.pid Adoption)) ⨝ Adoption.did = Dog.id Dog)
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-- Muestra el nombre y la ciudad cuya fotografía del perro adoptado es NULL.
+
+π Person.name, Person.city ((( σ picture = null Dog) ⨝ Dog.id = Adoption.did Adoption) ⨝ Adoption.pid = Person.id Person)
+
+
+
+
+-- Muestra la identificafión menor de una persona
+
+uno=πid1 (ρid1←id Person)
+dos=πid2 (ρid2←id Person)
+menor=(π id2 σid1<id2 (uno ⨯ dos))
+(πid Person) - menor
+
+
+-- Muestra la identificación del perro que pesa mas
+
+peso1=πweight1 (ρweight1←weight Dog)
+peso2=πweight2 (ρweight2←weight Dog)
+mayor=σweight1<weight2 (peso1 ⨯ peso2)
+MAYOR=πweight1 mayor 
+pesomayor=(πweight Dog) - MAYOR
+πid (pesomayor ⨝ Dog)
+
+
+-- Muestra el nombre de la persona y la ciudad cuyo perro pesa mas
+
+peso1=πweight1 (ρweight1←weight Dog)
+peso2=πweight2 (ρweight2←weight Dog)
+mayor=σweight1<weight2 (peso1 ⨯ peso2)
+MAYOR=πweight1 mayor 
+pesomayor=(πweight Dog) - MAYOR
+πname,city (((pesomayor ⨝ Dog) ⨝ Dog.id=Adoption.did Adoption) ⨝ Person.id=Adoption.pid Person)
+
+-- Obtenga el nombre y la ciudad de las personas que adoptaron perros en el año superior al 2009.
+
+π name,city ((πpid σ dateAd>date('2009-06-01') Adoption) ⨝ Adoption.pid=Person.id Person)

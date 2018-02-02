@@ -1,0 +1,4 @@
+precios1 = p price1 (?price1?price Serves)
+precios2 = p price2 (?price2?price Serves)
+precio_mayor = s price1 = price2 (precios1 ? precios2)
+precio_mayor

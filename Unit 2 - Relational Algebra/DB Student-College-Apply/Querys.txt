@@ -1,0 +1,25 @@
+(Sergio Jiménez Sastre, Medio): Encuentra el nombre de las personas que frecuentaron más de una pizzería.
+(Sergio Jiménez Sastre, Medium): Find the name of the people who frequented more than one pizzeria.
+--------------------------------------------------------------------------
+name1= ?name1?name,pizzeria1?pizzeria Frequents
+name2= ?name2?name,pizzeria2?pizzeria Frequents
+p name1 (name1 ?name1=name2 ? pizzeria1?pizzeria2 name2)
+
+
+(Sergio Jiménez Sastre, Difícil): Encuentra el nombre de las pizzerías cuyas pizzas se encuentran en el precio más barato.
+(Sergio Jiménez Sastre, Difficult): Find the name of the pizzerias whose pizzas are at the lower price.
+--------------------------------------------------------------------------
+precio1= p mayor_price (?mayor_price?price Serves)
+precio2= p lower_price (?lower_price?price Serves)
+precios_menos_menor= p mayor_price (precio1 ?lower_price<mayor_price precio2)
+precio_menor= (p price Serves) - precios_menos_menor
+p pizzeria (precio_menor ? Serves)
+
+
+
+
+
+
+eats1= ?name1?name,pizza1?pizza Eats
+eats2= ?name2?name,pizza2?pizza Eats
+comen_mas= eats1 ? name1=name2 ? pizza1?pizza2 eats2

@@ -1,0 +1,6 @@
+1- SELECT id FROM dog WHERE picture IS NULL
+2- SELECT pid,`name` FROM (SELECT * FROM dog JOIN adoption ON dog.id=adoption.did WHERE weight BETWEEN 7 AND 12) AS DogAdoption JOIN person ON DogAdoption.pid=person.id;
+3- SELECT id,weight,picture FROM adoption JOIN dog ON did=id WHERE weight<7 OR weight>12;
+4- SELECT * FROM (SELECT * FROM dog JOIN adoption ON dog.id=adoption.did WHERE `date` BETWEEN '2015-01-01' AND '2015-06-30' ) AS DogAdoption JOIN person ON DogAdoption.pid=person.id;
+5- SELECT id FROM (SELECT * FROM adoption JOIN dog ON did=id) AS ThisMoment WHERE active=true;
+6 - 
