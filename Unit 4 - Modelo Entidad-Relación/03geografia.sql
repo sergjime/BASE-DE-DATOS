@@ -1,0 +1,35 @@
+DROP SCHEMA IF EXISTS Geografia;
+CREATE SCHEMA Geografia;
+USE Geografia;
+
+CREATE TABLE Localidad (
+	id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(255),
+    numHab INT UNSIGNED,
+    CONSTRAINT PK_Localidad PRIMARY KEY (id)
+);
+
+CREATE TABLE Provincia (
+	codigo CHAR(2) NOT NULL,
+    nombre VARCHAR(255),
+    superficie FLOAT,
+    CONSTRAINT PK_Provincia PRIMARY KEY (codigo)
+);
+
+CREATE TABLE CA (
+	nombre VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_CA PRIMARY KEY (nombre)
+);
+
+ALTER TABLE Localidad ADD codigoProvincia CHAR(2) NOT NULL;
+ALTER TABLE Localidad ADD CONSTRAINT FK_LocalidadProvincia FOREIGN KEY (codigoProvincia) REFERENCES Provincia(codigo);
+
+ALTER TABLE Provincia ADD nomCA VARCHAR(255) NOT NULL;
+ALTER TABLE Provincia ADD CONSTRAINT FK_ProvinciaCA FOREIGN KEY (nomCA) REFERENCES CA(nombre);
+
+ALTER TABLE Provincia ADD capitalProvincia MEDIUMINT UNSIGNED NOT NULL;
+ALTER TABLE Provincia ADD CONSTRAINT FK_CapitalProvincia FOREIGN KEY (capitalProvincia) REFERENCES Localidad(id);
+
+ALTER TABLE CA ADD capitalCA MEDIUMINT UNSIGNED NOT NULL;
+ALTER TABLE CA ADD CONSTRAINT FK_CapitalCA FOREIGN KEY (capitalCA) REFERENCES Localidad(id);
+
